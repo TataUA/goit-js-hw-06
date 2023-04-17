@@ -18,15 +18,23 @@ destroyBtn.addEventListener('click', destroyBoxes);
 
 function createBoxes(amount) {
   const elements = [];
-  for(let i=0; i<amount; i++) {
+
+  if(amount < 1 || amount > 100) {
+    alert(`Incorrect value! You can use only numbers from 1 to 100!`);   
+    inputEl.value = "";
+    return amount = "";
+  } 
+
+  for(let i=0; i<amount; i += 1) {
     const divEl = document.createElement('div')
     divEl.style.height = `${30 + 10 * i}px`
     divEl.style.width = `${30 + 10 * i}px`
     divEl.style.backgroundColor = getRandomHexColor()
-    
+    inputEl.value= "";
     elements.push(divEl)
-  }
-  return elements
+    
+  }  
+  return elements  
 }
 
 function destroyBoxes() {
